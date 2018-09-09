@@ -1,10 +1,18 @@
 language: node_js
-if: branch =~ /^release\/.+/
+if: branch =~ /(^release\/.+)|master/
 node_js:
     - '8'
 install:
     - npm install
 script:
     - npm run build
-after_script:
-    - tar -cvf dist.tar ./dist
+after_script: 
+  if [ branch = master ]; then
+    tar -cvf dist.tar ./dist
+    echo 'master building'
+  else
+    echo 'release building'
+  fi
+notifications:
+    webhooks:
+        - http://another-domain.com/notifications
