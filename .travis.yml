@@ -5,17 +5,12 @@ node_js:
 install:
     - npm install
 script:
-  if: branch = master
-      - npm run build;
-      - echo 'master run build'
-  if: branch =~ /^release\/.+/
-      - echo 'release run build'
-after_script: 
-  if: branch = master
-      - tar -cvf dist.tar ./dist
-      - echo 'master built'
-  if: branch =~ /^release\/.+/
-      - echo 'release built'
+  - if [ $TRAVIS_BRANCH == "master" ]; then
+      npm run build;
+      echo "master"
+    else
+      echo "release"
+    fi
 notifications:
     webhooks:
         - http://another-domain.com/notifications
