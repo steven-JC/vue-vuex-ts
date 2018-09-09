@@ -1,3 +1,3 @@
 export as namespace Enums
 
-export * from 'common/enum'
+export * from '@/common/enum'

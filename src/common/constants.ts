@@ -1,8 +1,8 @@
-import * as enums from 'common/enum'
-import util from 'common/util'
+import * as enums from './enum';
+import util from './util';
 
 let constants = Object.assign({}, enums);
 
-util.deepFreeze(constants)
+util.deepFreeze(constants);
 
-export default constants
+export default constants;

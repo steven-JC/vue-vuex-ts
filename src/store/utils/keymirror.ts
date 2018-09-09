@@ -3,14 +3,14 @@
  */
 
 export default function<T>(obj: T): { [K in keyof T]: string } {
-    let ret = {}
-    let key
+    let ret = {};
+    let key;
 
     for (key in obj) {
         if ((obj as Object).hasOwnProperty(key)) {
-            ret[key] = key
+            ret[key] = key;
         }
     }
 
-    return ret as { [K in keyof T]: K }
+    return ret as { [K in keyof T]: string };
 }
