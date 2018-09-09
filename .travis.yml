@@ -9,6 +9,7 @@ script:
       npm run build;
       echo "master"
     else
+      npm run build;
       echo "release"
     fi
 notifications:
