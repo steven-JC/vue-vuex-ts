@@ -7,10 +7,10 @@ install:
 script:
   if: branch = master
     - npm run build;
-    - echo "master"
+    - echo "master";
   if: branch =~ /^release\/.+/
     - npm run build;
-    - echo "release"
+    - echo "release";
 notifications:
     webhooks:
         - http://another-domain.com/notifications
