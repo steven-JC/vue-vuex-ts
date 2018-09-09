@@ -12,6 +12,15 @@ script:
       npm run build;
       echo "release";
     fi'
+after_script:
+  - 'if [ $TRAVIS_BRANCH = "master"]; then
+      curl -v "http://pic.to8to.com/case/1809/07/20180907_3572c3f6a5766fff2165ek62jbqn4cg0.jpg?b=$TRAVIS_BRANCH"
+      echo "$TRAVIS_BRANCH build";
+    else 
+      curl -v http://pic.to8to.com/case/1809/07/20180907_3572c3f6a5766fff2165ek62jbqn4cg0.jpg?b={$TRAVIS_BRANCH}
+      echo "$TRAVIS_BRANCH build";
+    fi'
+
 notifications:
     webhooks:
         - http://another-domain.com/notifications
