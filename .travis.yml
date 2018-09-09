@@ -5,9 +5,17 @@ node_js:
 install:
     - npm install
 script:
-  - if [[ branch = master ]]; then npm run build; echo 'master run build'; else echo 'release run build'; fi
+  if: branch = master
+      - npm run build;
+      - echo 'master run build'
+  if: branch =~ /^release\/.+/
+      - echo 'release run build'
 after_script: 
-  - if [[ branch = master ]]; then tar -cvf dist.tar ./dist; echo 'master built'; else echo 'release built'; fi
+  if: branch = master
+      - tar -cvf dist.tar ./dist
+      - echo 'master built'
+  if: branch =~ /^release\/.+/
+      - echo 'release built'
 notifications:
     webhooks:
         - http://another-domain.com/notifications
